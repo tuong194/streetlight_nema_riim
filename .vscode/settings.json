@@ -1,0 +1,40 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.espIdfPathWin": "c:\\ESP_IDF\\v5.3.2\\esp-idf",
+    "idf.pythonInstallPath": "c:\\ESP_IDF\\tool_v5.3.2\\tools\\idf-python\\3.11.2\\python.exe",
+    "idf.openOcdConfigs": [
+        "board/esp32c3-builtin.cfg"
+    ],
+    "idf.portWin": "COM28",
+    "idf.toolsPathWin": "c:\\ESP_IDF\\tool_v5.3.2",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "c:\\ESP_IDF\\tool\\tools\\openocd-esp32\\v0.12.0-esp32-20240318/openocd-esp32/share/openocd/scripts",
+        "IDF_CCACHE_ENABLE": "1",
+        "ESP_ROM_ELF_DIR": "c:\\ESP_IDF\\tool\\tools\\esp-rom-elfs\\20240305/",
+        "IDF_TARGET": "esp32c3"
+    },
+    "idf.flashType": "UART",
+    "files.associations": {
+        "rd_model.hpp": "c",
+        "stdio.h": "c",
+        "rd_ota.h": "c",
+        "rd_lib.hpp": "c",
+        "rd_riim.hpp": "c",
+        "rd_lightcommon.hpp": "c",
+        "rd_sensorcommon.hpp": "c",
+        "rd_peripheral.hpp": "c",
+        "uart.h": "c",
+        "gpio.h": "c",
+        "freertos.h": "c",
+        "esp_timer.h": "c",
+        "rd_uart.h": "c",
+        "nvs_flash.h": "c",
+        "queue.h": "c",
+        "sdkconfig.h": "c",
+        "esp_system.h": "c",
+        "rd_flash.h": "c",
+        "esp_flash.h": "c",
+        "rd_lightctr.h": "c"
+    },
+    "liveServer.settings.port": 5501
+}

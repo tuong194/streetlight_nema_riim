@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Web Server</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background-color: #218336; }
+        .slider-container { margin: 20px; }
+        .slider-label { margin: 10px; }
+    </style>
+    <script>
+        function sendSliderValue(value) {
+            document.getElementById("sliderValue").innerText = value + "%";
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/setPercentage?value=" + value, true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h1>Rang Dong Street Lighting</h1>
+    <h1>Ver: V%d.%02d</h1>
+    <h2>Riim Net key: %s</h2>
+
+    <form action="/ota" method="get">
+        <button type="submit">Ota</button>
+    </form>
+    <form action="/setKey" method="get">
+        <button type="submit">Set Key</button>
+    </form>
+
+    <div class="slider-container">
+        <label for="percentageSlider" class="slider-label">Percentage: <span id="sliderValue">0%</span></label><br>
+        <input type="range" id="percentageSlider" name="percentageSlider" min="0" max="100" step="2" value="0" onchange="sendSliderValue(this.value)">
+    </div>
+</body>
+</html>

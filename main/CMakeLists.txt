@@ -1,0 +1,21 @@
+idf_component_register(SRCS "main.c"
+                             "RD_Lib/RD_Peripheral/rd_gpio.c"
+                             "RD_Lib/RD_Peripheral/rd_flash.c"
+                             "RD_Lib/RD_Peripheral/rd_uart.c"
+                        #     "RD_Lib/RD_Peripheral/rd_peripheral.cpp"
+                        #     "RD_Lib/RD_RIIM/rd_riim.cpp"
+                        #     "RD_Lib/RD_RIIM/rd_model.cpp"
+                        #     "RD_Lib/RD_Light/rd_test.cpp"
+                             "RD_Lib/RD_Light/rd_lightCtr.c"
+                        #     "RD_Lib/RD_Light/rd_lightCommon.cpp"
+                        #     "RD_Lib/RD_Light/rd_scene.cpp"
+                        #     "RD_Lib/RD_Sensor/rd_sensorCommon.cpp"
+                        #     "RD_Lib/RD_Sensor/rd_GPS.cpp"
+                        #     "RD_Lib/RD_Sensor/fir_filter.cpp"
+                        #     "RD_Lib/RD_Sensor/kalman_filter.cpp"
+                        #     "RD_Lib/RD_Sensor/rd_power.cpp"
+                            "RD_Lib/RD_OTA/rd_ota.c"
+                    INCLUDE_DIRS "."
+                    EMBED_TXTFILES      RD_Lib/RD_Web/index.html
+                                        RD_Lib/RD_Web/index_setkey.html
+                                        RD_Lib/RD_Web/index_intro.html)

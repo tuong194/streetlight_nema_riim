@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 Set Net key page</title>
+</head>
+<body>
+    <h1>RD StreetLight Set key</h1>
+    <p>Fill net key on the text box and submit</p>
+
+        <!-- Form to input text and submit -->
+    <form id="inputForm" action="/submit_netkey" method="post">
+        <!-- Label for the text box -->
+        <label for="inputText">Net key Set:</label>
+        <!-- Text box for user input -->
+        <input type="text" id="inputText" name="inputText">
+        <!-- Submit button -->
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
