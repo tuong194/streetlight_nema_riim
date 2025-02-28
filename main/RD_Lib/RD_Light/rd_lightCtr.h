@@ -8,8 +8,8 @@
 
 
 #define DIM_MIN_BEFORE_RELAY_OFF    10  //10% dim 
-#define TSS_DEFAULT						50
-#define RELAY_POWER_UP_DF			1
+#define TSS_DEFAULT					50
+#define RELAY_POWER_UP_DF			1  // RD_ON
 #define DIM_POWER_UP_DF				100 //100% power
 //#define CYCLE_TOGGLE_RELAY_OFF		1250 //1250us ==>800Hz
 #define CYCLE_TOGGLE_RELAY_OFF		700 //700us
@@ -47,3 +47,7 @@ typedef struct
 } light_stt_t;
 
 extern volatile light_stt_t light_stt_val;
+
+void light_set_safety(uint8_t safety_set);
+void light_set_ctr(uint8_t DimSet);
+void light_ctr_update(void) ;

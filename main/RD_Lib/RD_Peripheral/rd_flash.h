@@ -3,6 +3,7 @@
 
 #include "esp_flash.h"
 #include "esp_log.h"
+#include "esp_err.h"
 
 #define  FLASH_ADD_CONFIG 0x310000
 #define  FLASH_ADD_GROUP  0x311000
