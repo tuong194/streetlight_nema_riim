@@ -2,10 +2,17 @@
     "version":            "1.1",
     "project_name":       "streetlight_nema_riim",
     "project_version":    "2e7e8ca-dirty",
+<<<<<<< HEAD
     "project_path":       "D:/RANGDONG/streetlight_nema_riim",
     "idf_path":           "C:/My_Doc/ESP_IDF/v5.3.2/esp-idf",
     "build_dir":          "D:/RANGDONG/streetlight_nema_riim/build",
     "config_file":        "D:/RANGDONG/streetlight_nema_riim/sdkconfig",
+=======
+    "project_path":       "E:/ESP32/My_Code/streetlight_nema_riim",
+    "idf_path":           "C:/ESP_IDF/v5.3.2/esp-idf",
+    "build_dir":          "E:/ESP32/My_Code/streetlight_nema_riim/build",
+    "config_file":        "E:/ESP32/My_Code/streetlight_nema_riim/sdkconfig",
+>>>>>>> master
     "config_defaults":    "",
     "bootloader_elf":     "D:/RANGDONG/streetlight_nema_riim/build/bootloader/bootloader.elf",
     "app_elf":            "streetlight_nema_riim.elf",
@@ -1179,8 +1186,13 @@
             "priv_reqs": [],
             "managed_reqs": [],
             "managed_priv_reqs": [],
+<<<<<<< HEAD
             "file": "D:/RANGDONG/streetlight_nema_riim/build/esp-idf/main/libmain.a",
             "sources": [ "D:/RANGDONG/streetlight_nema_riim/main/main.c", "D:/RANGDONG/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_gpio.c", "D:/RANGDONG/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_flash.c", "D:/RANGDONG/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_uart.c", "D:/RANGDONG/streetlight_nema_riim/main/RD_Lib/RD_Light/rd_lightCtr.c", "D:/RANGDONG/streetlight_nema_riim/main/RD_Lib/RD_OTA/rd_ota.c", "D:/RANGDONG/streetlight_nema_riim/build/index.html.S", "D:/RANGDONG/streetlight_nema_riim/build/index_setkey.html.S", "D:/RANGDONG/streetlight_nema_riim/build/index_intro.html.S" ],
+=======
+            "file": "E:/ESP32/My_Code/streetlight_nema_riim/build/esp-idf/main/libmain.a",
+            "sources": [ "E:/ESP32/My_Code/streetlight_nema_riim/main/main.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_gpio.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_flash.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Peripheral/rd_uart.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_RIIM/rd_riim.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_RIIM/rd_model.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Light/rd_lightCtr.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Light/rd_lightCommon.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Light/rd_scene.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Sensor/rd_sensorCommon.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_Sensor/rd_GPS.c", "E:/ESP32/My_Code/streetlight_nema_riim/main/RD_Lib/RD_OTA/rd_ota.c", "E:/ESP32/My_Code/streetlight_nema_riim/build/index.html.S", "E:/ESP32/My_Code/streetlight_nema_riim/build/index_setkey.html.S", "E:/ESP32/My_Code/streetlight_nema_riim/build/index_intro.html.S" ],
+>>>>>>> master
             "include_dirs": [ "." ]
         },
         "mbedtls": {

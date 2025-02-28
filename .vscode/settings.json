@@ -34,7 +34,13 @@
         "esp_system.h": "c",
         "rd_flash.h": "c",
         "esp_flash.h": "c",
-        "rd_lightctr.h": "c"
+        "rd_lightctr.h": "c",
+        "rd_sensorcommon.h": "c",
+        "rd_gps.h": "c",
+        "string_view": "c",
+        "rd_riim.h": "c",
+        "rd_lightcommon.h": "c",
+        "stdint.h": "c"
     },
     "liveServer.settings.port": 5501
 }

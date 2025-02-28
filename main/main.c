@@ -16,7 +16,8 @@ static const char *MAIN_TAG = "RD_MAIN";
 void app_main(void)
 {
     ESP_LOGI(MAIN_TAG, "--------------------------StreetLight RangDong ESP32-C3" );
-    
+    rd_uart_init();
+    rd_sensor_init();
     RD_OTA_server_setup(EXAMPLE_ESP_WIFI_SSID, EXAMPLE_ESP_WIFI_PASS);
 
 

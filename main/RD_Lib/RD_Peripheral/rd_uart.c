@@ -53,7 +53,7 @@ static void rd_uart_init_gps(void)
 
 void rd_uart_init(void)
 {
-    rd_uart_init_riim();
+    //rd_uart_init_riim();
     rd_uart_init_gps();
 }
 

@@ -557,7 +557,6 @@ esp_err_t submit_key_post_handler(httpd_req_t *req) {
 			//Flash save
 			//RD_Save_DataConfig(); // T_NOTE
 
-
 			vTaskDelay(1000 / portTICK_PERIOD_MS);
 			esp_restart();
 		}
@@ -570,13 +569,13 @@ esp_err_t set_percentage_handler(httpd_req_t *req) {
     char value_str[8];
     int value;
 
-    if (httpd_req_get_url_query_str(req, query, sizeof(query)) == ESP_OK) {
-        if (httpd_query_key_value(query, "value", value_str, sizeof(value_str)) == ESP_OK) {
+    if (httpd_req_get_url_query_str(req, query, sizeof(query)) == ESP_OK) { //get query string từ request URL ex: /setPercentage?value=75 thì query = value=75
+        if (httpd_query_key_value(query, "value", value_str, sizeof(value_str)) == ESP_OK) { // ex: value_str = 75
             value = atoi(value_str);
             ESP_LOGI(TAG, "Received value: %d\n", value);
             const char* response = "Value received";
             httpd_resp_send(req, response, strlen(response));
-			//light_set_ctr(value); // T_NOTE
+			light_set_ctr(value); 
             return ESP_OK;
         }
     }
@@ -597,35 +596,35 @@ httpd_uri_t set_percentage_uri = {
 	.user_ctx  = NULL
 };
 
-httpd_uri_t update_post = {
+httpd_uri_t update_post = { // btn ota esp
 	.uri	  = "/update",
 	.method   = HTTP_POST,
 	.handler  = update_post_handler,
 	.user_ctx = NULL
 };
 
-httpd_uri_t update_post_riim = {
+httpd_uri_t update_post_riim = { // btn ota riim 
 	.uri	  = "/update_riim",
 	.method   = HTTP_POST,
 	.handler  = update_post_handler_riim,
 	.user_ctx = NULL
 };
 
-httpd_uri_t index_ota_get = {
+httpd_uri_t index_ota_get = { // goto index.html (page ota)
 	.uri	  = "/ota",
 	.method   = HTTP_GET,
 	.handler  = index_ota_get_handler,
 	.user_ctx = NULL
 };
 
-httpd_uri_t index_setkey_get = {
+httpd_uri_t index_setkey_get = { // goto setkey.html (page set key)
 	.uri	  = "/setKey",
 	.method   = HTTP_GET,
 	.handler  = index_setkey_get_handler,
 	.user_ctx = NULL
 };
 
-httpd_uri_t submit_key_post = {
+httpd_uri_t submit_key_post = { // btn subnet key
 	.uri	  = "/submit_netkey",
 	.method   = HTTP_POST,
 	.handler  = submit_key_post_handler,
@@ -721,11 +720,11 @@ static void xmodem_next_state(Xmodem_state_t *state_in){
 }
 
 static void Xmodem_send_mess(uint8_t *data_in, size_t data_leng){
-  uart_write_bytes(UART_NUM_1, (const char *) data_in, data_leng);
+  uart_write_bytes(RIIM_UART_ID, (const char *) data_in, data_leng);
 }
 static int Xmodem_read(void *buff, uint32_t buff_len){
 	memset(buff, 0x00, buff_len);
-	return uart_read_bytes(UART_NUM_1, buff, buff_len, 20 / portTICK_PERIOD_MS); // T_EDIT
+	return uart_read_bytes(RIIM_UART_ID, buff, buff_len, 20 / portTICK_PERIOD_MS); // T_EDIT
 }
 // #ifdef __cplusplus
 // }

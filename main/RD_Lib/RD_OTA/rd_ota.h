@@ -20,7 +20,9 @@ extern "C" {
 #include <sys/param.h>
 #include <esp_http_server.h>
 #include <esp_ota_ops.h>
-// #include "../RD_Peripheral/rd_uart.hpp"
+
+#include "../RD_Light/rd_lightCtr.h"
+#include "../RD_Peripheral/rd_uart.h"
 // #include "../RD_Peripheral/rd_gpio.hpp"
 //#include "../RD_RIIM/rd_riim.hpp"
 #define HIDE_SSID_EN   0
