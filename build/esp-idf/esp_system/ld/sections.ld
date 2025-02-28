@@ -1,6 +1,6 @@
 /* Automatically generated file; DO NOT EDIT */
 /* Espressif IoT Development Framework Linker Script */
-/* Generated from: E:\ESP32\My_Code\streetlight_nema_riim\build\esp-idf\esp_system\ld\sections.ld.in */
+/* Generated from: D:\RANGDONG\streetlight_nema_riim\build\esp-idf\esp_system\ld\sections.ld.in */
 
 /*
 

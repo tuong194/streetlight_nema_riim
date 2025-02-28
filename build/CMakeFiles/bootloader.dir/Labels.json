@@ -2,34 +2,34 @@
 	"sources" : 
 	[
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/CMakeFiles/bootloader"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/CMakeFiles/bootloader"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/CMakeFiles/bootloader.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/CMakeFiles/bootloader.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/CMakeFiles/bootloader-complete.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/CMakeFiles/bootloader-complete.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
 		},
 		{
-			"file" : "E:/ESP32/My_Code/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+			"file" : "D:/RANGDONG/streetlight_nema_riim/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
 		}
 	],
 	"target" : 

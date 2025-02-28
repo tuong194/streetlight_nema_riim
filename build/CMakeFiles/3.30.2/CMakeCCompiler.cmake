@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc.exe")
+set(CMAKE_C_COMPILER "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "13.2.0")
@@ -19,15 +19,15 @@ set(CMAKE_C_SIMULATE_ID "")
 set(CMAKE_C_COMPILER_FRONTEND_VARIANT "GNU")
 set(CMAKE_C_SIMULATE_VERSION "")
 
-set(CMAKE_C_COMPILER_SYSROOT "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/../riscv32-esp-elf/usr")
-set(CMAKE_COMPILER_SYSROOT "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/../riscv32-esp-elf/usr")
+set(CMAKE_C_COMPILER_SYSROOT "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/../riscv32-esp-elf/usr")
+set(CMAKE_COMPILER_SYSROOT "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/../riscv32-esp-elf/usr")
 
 
-set(CMAKE_AR "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ar.exe")
-set(CMAKE_C_COMPILER_AR "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ar.exe")
-set(CMAKE_RANLIB "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib.exe")
-set(CMAKE_C_COMPILER_RANLIB "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ranlib.exe")
-set(CMAKE_LINKER "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ld.exe")
+set(CMAKE_AR "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ar.exe")
+set(CMAKE_C_COMPILER_AR "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ar.exe")
+set(CMAKE_RANLIB "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib.exe")
+set(CMAKE_C_COMPILER_RANLIB "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ranlib.exe")
+set(CMAKE_LINKER "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/bin/riscv32-esp-elf-ld.exe")
 set(CMAKE_LINKER_LINK "")
 set(CMAKE_LINKER_LLD "")
 set(CMAKE_C_COMPILER_LINKER "NOTFOUND")
@@ -76,7 +76,7 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/include;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/include-fixed;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/include")
+set(CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/include;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/include-fixed;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/include")
 set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "gcc;c;nosys;c;gcc;gcc;c;nosys")
-set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/rv32imc_zicsr_zifencei/ilp32;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/lib;C:/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/usr/lib")
+set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0/rv32imc_zicsr_zifencei/ilp32;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/13.2.0;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/lib/gcc;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/lib;C:/My_Doc/ESP_IDF/tool_v5.3.2/tools/riscv32-esp-elf/esp-13.2.0_20240530/riscv32-esp-elf/riscv32-esp-elf/usr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")
