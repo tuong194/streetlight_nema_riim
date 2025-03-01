@@ -8,13 +8,15 @@
 
 #include "rd_GPS.h"
 #include "../RD_RIIM/rd_model.h"
+#include "../RD_Peripheral/rd_adc.h"
+#include "BL0942.h"
 
 #define CYCLE_CHECK_RTC_TASK_US    (500000)     // 500 ms check
 #define CYCLE_CHECK_GPS_NEWTASK_US (20000000)    // 20 seconds when gps signal is invalid
 #define CYCLE_CHECK_GPS_OLDTASK_US (300000000)  // 300 seconds when gps signal is valid
 #define CYCLE_CHECK_TEMP_TASK_US   (30000000)   // 30s
 #define CYCLE_CHECK_LIGHT_TASK_US  (30000000)   // 30s
-#define CYCLE_CHECK_POW_TASK_US    (28000000)   // 28s
+#define CYCLE_CHECK_POW_TASK_US    (30000000)   // 30s
 #define TIME_SCAN_ERROR_US         (CYCLE_CHECK_POW_TASK_US)
 
 #define TEMP_OFFSET_ZERO		50					// set dải đo -50*C-->200*C

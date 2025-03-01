@@ -372,7 +372,7 @@ static void RD_LightCommonUpdate(void *arg)
         if(esp_timer_get_time() - last_time_tick_test >= 500000)
         {
             last_time_tick_test = esp_timer_get_time();
-            //RD_Testting_Loop();
+            //RD_Testting_Loop(); //T_NOTE cmd tetting loop
         }
 
         vTaskDelay(1/portTICK_PERIOD_MS);

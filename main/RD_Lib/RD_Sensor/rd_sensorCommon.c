@@ -112,16 +112,15 @@ static void rd_GPS_task(void)
 static uint16_t RD_Get_EnviLight(void)
 {
     uint16_t Light_Buff = 0;
-    // const float Alpha_Light = 1.0;
-    // Light_Buff = adc1_light_raw;
-    // Light_Buff = Light_Buff*Alpha_Light;
+    const float Alpha_Light = 1.0;
+    Light_Buff = light_val;
+    Light_Buff = Light_Buff*Alpha_Light;
     return Light_Buff;
 }
 
 static void rd_Light_task(void)
 {
     static uint16_t Lightness_Buff;
-
     Lightness_Buff = RD_Get_EnviLight();
     Sensor_Of_Light_Common.EnviLightness[0] = (uint8_t)((Lightness_Buff >> 8) & 0xff);
     Sensor_Of_Light_Common.EnviLightness[1] = (uint8_t)((Lightness_Buff) & 0xff);
@@ -132,14 +131,90 @@ static void rd_Light_task(void)
 /*-----------------------------------------------------------------------------------*/
 
 /*-------------------------------------Temp------------------------------------------*/
+static float RD_NTC_Convert(uint16_t ADC_Value)
+{
+	// t = a + b*ADC_Value
+	float a = 87.26;
+	float b = -0.01927;
+	#if 0
+	if(ADC_Value >= 3724)  // >25
+	{
+		a = 426.5;
+		b =  -0.1078;
+	}
+	else if((ADC_Value >= 3291) && (ADC_Value < 3724))  // 25-50
+	{
+		a = 240;
+		b = -0.0577;  
+	}
+	else if((ADC_Value >= 2670) && (ADC_Value < 3291))  // 50-75
+	{
+		a = 182.5;
+		b = -0.0403;
+	}
+	else if((ADC_Value <2670))  // 100->110
+	{
+		a = 173;
+		b = -0.0368;
+	}
+	#endif
+	float Temp = a + ADC_Value*b;
+	Temp = (Temp < 5) 	? 5:Temp;
+	Temp = (Temp > 100) ? 100:Temp;
+	return Temp;
+}
+
+static float RD_Get_NTC_Temperature(void)
+{
+	int16_t Temp_u16_Buff = 0;
+	float 	 Temp_fl_Buff  =0;
+
+	Temp_u16_Buff = temp_val;
+	if(Temp_u16_Buff > 3900) Temp_u16_Buff = 3900;
+	Temp_fl_Buff = RD_NTC_Convert(Temp_u16_Buff );
+	
+	return Temp_fl_Buff;
+}
+
 static void rd_Temp_Task(void)
 {
+    static float 	 TempFloat=0;
+	TempFloat =  RD_Get_NTC_Temperature();
+	Sensor_Of_Light_Common.Temp = (uint8_t) (TempFloat/1 + TEMP_OFFSET_ZERO);
+
+    ESP_LOGI(SENSOR_TAG, "Update Temp Done: %0.2f *C \n", TempFloat );
 }
 /*-----------------------------------------------------------------------------------*/
 
 /*-------------------------------------Power -----------------------------------------*/
 static void rd_Power_Task(void)
 {
+    static uint16_t U_rms_int, I_rms_int, P_rms_int;
+    static uint8_t Cos_int;
+    static uint32_t Power_Consum_Ws;
+    static uint16_t Power_Consum_Buff;
+    read_UIP();
+
+    U_rms_int = (uint16_t)data_bl0942.U_hd*10;
+	Sensor_Of_Light_Common.Voltage[0]   = (uint8_t)  ((U_rms_int >> 8)& 0xff); 
+	Sensor_Of_Light_Common.Voltage[1]   = (uint8_t)  (U_rms_int 	& 0xff);
+
+    I_rms_int = (uint16_t) ((data_bl0942.I_hd*100)/1);
+    Sensor_Of_Light_Common.Ampe[0]      = (uint8_t)  ((I_rms_int >> 8)& 0xff); 
+	Sensor_Of_Light_Common.Ampe[1]      = (uint8_t)  (I_rms_int 	& 0xff);
+
+    P_rms_int = (uint16_t)data_bl0942.P_hd/1;
+    Sensor_Of_Light_Common.Power[0]		= (uint8_t)  ((P_rms_int >> 8)& 0xff);
+	Sensor_Of_Light_Common.Power[1]		= (uint8_t)  (P_rms_int 	& 0xff);
+
+    Cos_int  = (uint8_t)data_bl0942.Cos_Phi*100/1;
+    Sensor_Of_Light_Common.Cos_UI = Cos_int	;
+
+    Power_Consum_Ws += P_rms_int * (CYCLE_CHECK_POW_TASK_US/1000000);
+
+	Power_Consum_Buff = Power_Consum_Ws/3600; 
+	Sensor_Of_Light_Common.Power_Consum[0]  = (uint8_t)  ((Power_Consum_Buff >> 8)& 0xff); 
+	Sensor_Of_Light_Common.Power_Consum[1]  = (uint8_t)  (Power_Consum_Buff 	& 0xff);
 }
 /*-----------------------------------------------------------------------------------*/
 
@@ -158,6 +233,8 @@ static void rd_sensor_task(void *arg)
 
     // RD_NOTE: set GMT +7 time
     rd_set_GMT_7();
+    rd_adc_init();
+    rd_bl0942_init();
 
     while (1)
     {

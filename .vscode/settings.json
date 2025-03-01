@@ -40,7 +40,12 @@
         "string_view": "c",
         "rd_riim.h": "c",
         "rd_lightcommon.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "bl0942.h": "c",
+        "rd_adc.h": "c",
+        "functional": "c",
+        "rd_light_temp.h": "c",
+        "esp_log.h": "c"
     },
     "liveServer.settings.port": 5501
 }
