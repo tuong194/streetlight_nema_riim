@@ -9,6 +9,7 @@
 #include "rd_GPS.h"
 #include "../RD_RIIM/rd_model.h"
 #include "../RD_Peripheral/rd_adc.h"
+#include "../RD_Light/rd_lightCommon.h"
 #include "BL0942.h"
 
 #define CYCLE_CHECK_RTC_TASK_US    (500000)     // 500 ms check

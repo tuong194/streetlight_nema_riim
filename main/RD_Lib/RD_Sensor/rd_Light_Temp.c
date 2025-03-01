@@ -2,4 +2,6 @@
 
 static const char *LT_TAG = "Light_Temp: ";
 
-void rd_init_light_temp(void);
+void rd_init_light_temp(void){
+    
+}

@@ -66,7 +66,7 @@ typedef struct
 	uint8_t Checksum;				// total checksum 
 }Xmodem_data_trans_t;
 
-TaskHandle_t xTask_RD_Riim_Process_Handle;
+extern TaskHandle_t xTask_RD_Riim_Process_Handle;
 
 static int Xmodem_read(void *buff, uint32_t buff_len);
 static void Xmodem_send_mess(uint8_t *data_in, size_t data_leng);

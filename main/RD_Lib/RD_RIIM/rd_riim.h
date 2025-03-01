@@ -1,16 +1,20 @@
 #pragma once
 
-#include "rd_model.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include "stdint.h"
 #include "esp_log.h"
+#include "rd_model.h"
+#include "../RD_Peripheral/rd_uart.h"
 
 #define LENGMESS_RIIMDF         32
+#define TEMPBUFF_LENGTH			64
 
 #define POWER_TX_DF_H			0x00
 #define POWER_TX_DF_L	        0x13
 #define CHANNEL_DF				0x01
 
-#if 0
+
 #define TEMPBUFF_LENGTH			64
 #define LENGMESS_RIIMDF         32
 
@@ -73,4 +77,17 @@
 #define LENG_OPCODE_SET_NETKEY_HCL_RSP 		3 
 #define LENG_OPCODE_SET_POWER_TRAN_MR_RSP 	5
 #define LENG_OPCODE_KICK_OUT_MR_RSP 		3
-#endif
+typedef struct IncomingData{
+	uint8_t 	Hearder[2];
+	uint8_t		Length;
+	uint8_t		Opcode[2];
+	uint8_t		Message[MESSAGE_MAXLENGTH];
+} TS_GWIF_IncomingData;
+
+
+typedef struct Riim_Data_t{
+	uint8_t 	Mac[8];
+	uint8_t		Version[2];
+} Riim_Data_t;
+
+

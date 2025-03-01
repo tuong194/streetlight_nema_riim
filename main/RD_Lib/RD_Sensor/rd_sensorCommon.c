@@ -212,7 +212,7 @@ static void rd_Power_Task(void)
 
     Power_Consum_Ws += P_rms_int * (CYCLE_CHECK_POW_TASK_US/1000000);
 
-	Power_Consum_Buff = Power_Consum_Ws/3600; 
+	Power_Consum_Buff = Power_Consum_Ws/3600; //kW/h
 	Sensor_Of_Light_Common.Power_Consum[0]  = (uint8_t)  ((Power_Consum_Buff >> 8)& 0xff); 
 	Sensor_Of_Light_Common.Power_Consum[1]  = (uint8_t)  (Power_Consum_Buff 	& 0xff);
 }
@@ -220,7 +220,99 @@ static void rd_Power_Task(void)
 
 /*-------------------------------------CHECK_ERROR------------------------------------------*/
 void RD_Check_Error(void){
+	static int64_t  Time_Check_Old =0;
+	static uint8_t   Count_Vol_High =0;
+	static uint8_t   Count_Vol_Low =0;
 
+	if(esp_timer_get_time() < Time_Check_Old)          Time_Check_Old =0;
+
+	if((esp_timer_get_time() >= TIME_SCAN_ERROR_US) && (esp_timer_get_time() - Time_Check_Old >= TIME_SCAN_ERROR_US))
+	{
+        Time_Check_Old = esp_timer_get_time();
+		union                 //    union contain SttScene - Cos -U -I
+		{
+			uint8_t SttS_Err;      //khai bao thi se tang them 4 byte. gia tr? == struct duoi
+			struct 
+			{
+				uint8_t U_H         :1;  // bit0
+				uint8_t U_L 		:1;  // bit 1
+				uint8_t I_H 		:1;   // bit 2
+				uint8_t I_L         :1;   // bit 3 
+				uint8_t T_H         :1;   // bit 4 
+				uint8_t T_L         :1;   // bit 5  
+			} SttS_Err_t;
+		} SttS_Err;
+		
+		SttS_Err.SttS_Err = Sensor_Of_Light_Common.Error[0];
+		
+		uint16_t Vol_High = ((Warning_Config_Val_Common.Voltage_TooHigh[0] << 8) | (Warning_Config_Val_Common.Voltage_TooHigh[1]));
+		uint16_t Vol_Pre  = ((Sensor_Of_Light_Common.Voltage[0] << 8)            | (Sensor_Of_Light_Common.Voltage[1]));
+		uint16_t Vol_Low = ((Warning_Config_Val_Common.Voltage_TooLow[0] << 8) 	 | (Warning_Config_Val_Common.Voltage_TooLow[1])); 
+
+ 
+		#if 0  		// check 1 
+		if(SttS_Err.SttS_Err_t.U_H == 0) SttS_Err.SttS_Err_t.U_H = (Vol_Pre > Vol_High) 	? 1:0;			// get error Hight Voltage
+		else 							 SttS_Err.SttS_Err_t.U_H = (Vol_Pre < (Vol_High-5)) ? 0:1;			// getout error Hight Voltage
+
+		if(SttS_Err.SttS_Err_t.U_L == 0) SttS_Err.SttS_Err_t.U_L = (Vol_Pre < Vol_Low)  	? 1:0;			// get error Low Voltage
+		else							 SttS_Err.SttS_Err_t.U_L = (Vol_Pre > (Vol_Low+5))  ? 0:1;			// getout error Low Voltage
+		#endif
+		
+		/*------------------------------ Check Voltage too Hight------------------------*/
+		if(SttS_Err.SttS_Err_t.U_H == 0)
+		{
+			if(Vol_Pre > Vol_High)   			{Count_Vol_High++; ESP_LOGI(SENSOR_TAG," Voltage too Hight  \n");}
+			
+			if(Count_Vol_High >= 5)	
+			{ 	
+				Count_Vol_High =5;
+				SttS_Err.SttS_Err_t.U_H = 1;																	// get error Low Voltage
+				ESP_LOGI(SENSOR_TAG," Voltage too High get Error and turn off \n");			
+			}											
+			//else					SttS_Err.SttS_Err_t.U_H = 0;											// getout error Low Voltage
+		}
+		else 
+		{
+			if(Vol_Pre < (Vol_High-5))
+			{
+				if(Count_Vol_High >=1)	Count_Vol_High--;
+				else 					SttS_Err.SttS_Err_t.U_H =0;
+			}				
+		}
+		
+		/*------------------------------ Check Voltage too Low------------------------*/
+		if(SttS_Err.SttS_Err_t.U_L == 0)
+		{
+			if(Vol_Pre < Vol_Low)   			{Count_Vol_Low++; ESP_LOGI(SENSOR_TAG," Voltage too Low  \n");}
+			
+			if(Count_Vol_Low >= 5)	
+			{ 	
+				Count_Vol_Low =5;
+				SttS_Err.SttS_Err_t.U_L = 1;																	// get error Low Voltage
+				ESP_LOGI(SENSOR_TAG," Voltage too Low get Error and turn off \n");			
+			}											
+			//else					SttS_Err.SttS_Err_t.U_L = 0;											// getout error Low Voltage
+		}
+		else 
+		{
+			if(Vol_Pre > (Vol_Low+5))
+			{
+				if(Count_Vol_Low >=1)	Count_Vol_Low--;
+				else 					SttS_Err.SttS_Err_t.U_L =0;
+			}				
+		}
+	
+		
+		uint16_t Ampe_High = ((Warning_Config_Val_Common.Ampe_TooHigh[0] << 8) 	| (Warning_Config_Val_Common.Ampe_TooHigh[1]));
+		uint16_t Ampe_Pre  = ((Sensor_Of_Light_Common.Ampe[0] << 8)            	| (Sensor_Of_Light_Common.Ampe[1])); 
+		SttS_Err.SttS_Err_t.I_H = (Ampe_Pre > Ampe_High) ? 1:0;
+		
+		uint16_t Temp_High = Warning_Config_Val_Common.Temperature_TooHigh;
+		uint16_t Temp_Pre  = Sensor_Of_Light_Common.Temp  ; 
+		SttS_Err.SttS_Err_t.T_H = (Temp_Pre > Temp_High) ? 1:0;
+		
+		Sensor_Of_Light_Common.Error[0] = SttS_Err.SttS_Err;
+	}
 }
 
 
@@ -267,6 +359,13 @@ void rd_sensor_init(void)
     xTaskCreate(rd_sensor_task, "Sensor Task:", 2024 * 2, NULL, configMAX_PRIORITIES - 4, NULL);
 }
 
+
+
+
+
+
+
+
 void test_tm()
 {
 
@@ -278,7 +377,7 @@ void test_tm()
     struct tm time_info;               // Bộ nhớ do người dùng cấp phát
     // localtime_r(&time_now, &RTC_Val);
 
-    RTC_offset = rd_get_RTC_Offset(30, 47, 10, 28, 2, 24);
+    RTC_offset = rd_get_RTC_Offset(30, 47, 10, 28, 2, 24); // 10:47:30 28/2/2024
     time_now = RTC_offset + updateRTCTime();
 
     localtime_r(&time_now, &time_info); // Chuyển đổi thời gian
